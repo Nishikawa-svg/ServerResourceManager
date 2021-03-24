@@ -4,10 +4,39 @@ import { UserContext } from "../contexts/UserContext";
 import { Button, Grid, Paper, TextField, makeStyles } from "@material-ui/core";
 import LockIcon from "@material-ui/icons/Lock";
 const useStyles = makeStyles({
-  paper: {},
-  lockIcon: {},
-  inputBox: {},
-  title: {},
+  paper: {
+    marginTop: 50,
+    width: 400,
+    textAlign: "center",
+  },
+  lockIcon: {
+    width: 40,
+    height: 40,
+    marginTop: 20,
+  },
+  title: {
+    fontSize: 24,
+    margin: "8px 8px",
+  },
+  inputBox: {
+    height: 40,
+    marginBottom: 50,
+  },
+  button: {
+    height: 50,
+    marginBottom: 10,
+    backgroundColor: "#1870DB",
+    color: "white",
+    textTransform: "none",
+    "&:hover": {
+      backgroundColor: "blue",
+    },
+  },
+  link: {
+    textDecoration: "none",
+    fontsize: 14,
+    color: "blue",
+  },
 });
 const initialState = { name: "", password: "" };
 function SignIn() {

@@ -3,7 +3,41 @@ import { Button, Grid, Paper, TextField, makeStyles } from "@material-ui/core";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { useHistory, Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-const useStyles = makeStyles({});
+const useStyles = makeStyles({
+  paper: {
+    marginTop: 50,
+    width: 400,
+    textAlign: "center",
+  },
+  personAddIcon: {
+    width: 40,
+    height: 40,
+    marginTop: 20,
+  },
+  title: {
+    fontSize: 24,
+    margin: "8px 8px",
+  },
+  inputBox: {
+    height: 40,
+    marginBottom: 30,
+  },
+  button: {
+    height: 50,
+    marginBottom: 10,
+    backgroundColor: "#1870DB",
+    color: "white",
+    textTransform: "none",
+    "&:hover": {
+      backgroundColor: "blue",
+    },
+    link: {
+      textDecoration: "none",
+      fontSize: 14,
+      color: "blue",
+    },
+  },
+});
 const initialState = { name: "", grade: "", password: "", confirmPassword: "" };
 
 function SignUp() {
@@ -57,7 +91,7 @@ function SignUp() {
                 <Grid item>
                   <PersonAddIcon
                     color="secondary"
-                    className={classes.poersonAddIcon}
+                    className={classes.personAddIcon}
                   />
                 </Grid>
                 <Grid item>
@@ -136,7 +170,9 @@ function SignUp() {
                 </Grid>
                 <Grid container justify="flex-end">
                   <Link to="/signin" className={classes.link}>
-                    I have my own account
+                    <Grid item>
+                      <div>I have my own account</div>
+                    </Grid>
                   </Link>
                 </Grid>
               </Grid>
