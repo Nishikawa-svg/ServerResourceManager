@@ -65,17 +65,11 @@ function Resource() {
     } else if (newServerList[id - 1].coreUser[idx] === parseInt(userId)) {
       newServerList[id - 1].coreUser[idx] = null;
     }
-    setServerList(newServerList);
     setOpen(false);
+    setServerList(newServerList);
   };
   return (
     <>
-      <h1>Resource page</h1>
-      {userList.length < userId || userId === null ? (
-        <h1>please sign in</h1>
-      ) : (
-        <h1>hey {userList[userId - 1].userName}</h1>
-      )}
       {serverList.map((server) => (
         <div key={server.serverId}>
           <Grid container justify="center">
@@ -107,10 +101,6 @@ function Resource() {
         setOpen={setOpen}
         selectCore={selectCore}
       />
-      <input
-        type="datetime-local"
-        onChange={(e) => setDatetime(e.target.value)}
-      />
       <br />
       <br />
       <br />
@@ -125,6 +115,11 @@ function TimeSelectDialog({ open, setOpen, selectCore, handleClick }) {
   const handleClose = () => {
     setOpen(false);
   };
+  const [time, setTime] = useState();
+  const timeChange = (e) => {
+    console.log(e.target.value);
+  };
+  if (serverList) console.log(serverList[selectCore.serverId - 1]);
 
   const StatusJudge = () => {
     if (
@@ -133,7 +128,15 @@ function TimeSelectDialog({ open, setOpen, selectCore, handleClick }) {
       return (
         <>
           <DialogTitle>You can use</DialogTitle>
-          <DialogContent>unused core</DialogContent>
+          <DialogContent>
+            unused core
+            <br />
+            please select end time
+            <br />
+            <input type="datetime-local" value={time} onChange={timeChange} />
+            <br />
+            or undecided
+          </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleClick}>Use</Button>
@@ -149,15 +152,30 @@ function TimeSelectDialog({ open, setOpen, selectCore, handleClick }) {
           <DialogTitle>You are using</DialogTitle>
           <DialogContent>Do you want to complete it</DialogContent>
           <DialogActions>
+            <Button onClick={handleClose}>Cancel</Button>
             <Button onClick={handleClick}>Complete</Button>
           </DialogActions>
         </>
       );
     } else {
+      let startDate = new Date(
+        serverList[selectCore.serverId - 1].startDate[selectCore.coreId]
+      );
+      startDate = startDate.toLocaleString();
+      let endDate = new Date(
+        serverList[selectCore.serverId - 1].endDate[selectCore.coreId]
+      );
+      endDate = endDate.toLocaleString();
       return (
         <>
           <DialogTitle>Another user using</DialogTitle>
-          <DialogContent>used core</DialogContent>
+          <DialogContent>
+            used core
+            <br />
+            start at : {serverList && startDate}
+            <br />
+            end at : {serverList && endDate}
+          </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>OK</Button>
           </DialogActions>

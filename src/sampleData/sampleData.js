@@ -13,6 +13,8 @@ export const sampleServerList = [
     registrationDate: Date.now(),
     coresUsed: 0,
     coreUser: [1, 3, null, null, null, null, null, null],
+    startDate: [Date.now(), Date.now(), null, null, null, null, null, null],
+    endDate: [Date.now(), Date.now(), null, null, null, null, null, null],
   },
   {
     serverId: 2,
@@ -21,6 +23,8 @@ export const sampleServerList = [
     registrationDate: Date.now(),
     coresUsed: 0,
     coreUser: [null, null, null, null, null, null, null, null],
+    startDate: [null, null, null, null, null, null, null, null],
+    endtDate: [null, null, null, null, null, null, null, null],
   },
   {
     serverId: 3,
@@ -29,5 +33,7 @@ export const sampleServerList = [
     registrationDate: Date.now(),
     coresUsed: 0,
     coreUser: [null, null, null, null],
+    startDate: [null, null, null, null],
+    endDate: [null, null, null, null],
   },
 ];
